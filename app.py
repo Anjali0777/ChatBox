@@ -1,11 +1,14 @@
 from flask import Flask, request, render_template
 import PyPDF2
 import openai
-
+from dotenv import load_dotenv
+import os
 app = Flask(__name__)
 
-# Set your OpenAI API key here
-openai.api_key = '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'
+load_dotenv()
+
+# Get the API key from the environment
+openai.api_key = os.getenv('OPENAI_API_KEY')
 
 def extract_text_from_pdf(pdf_file):
     """Extract text from a PDF file."""
